@@ -19,6 +19,7 @@ var app = app || {};
 		events: {
 			'click .toggle': 'toggleCompleted',
 			'dblclick label': 'edit',
+			'click .priority-btn': 'setPriority',
 			'click .edit-btn': 'edit',
 			'click .destroy': 'clear',
 			'keypress .edit': 'updateOnEnter',
@@ -128,6 +129,16 @@ var app = app || {};
 		// Remove the item, destroy the model from *localStorage* and delete its view.
 		clear: function () {
 			this.model.destroy();
+		},
+
+		// Set the item as a priority item
+		setPriority: function(){
+			if(this.$el.hasClass('priority')){
+				this.$el.removeClass('priority');
+			}else{
+				this.$el.addClass('priority');
+			}
+
 		}
 	});
 })(jQuery);
